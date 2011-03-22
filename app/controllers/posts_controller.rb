@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_filter :load_resources, :only => [:new, :create, :edit, :update]
+
   def index
     @posts = Post.all
     respond_with @posts
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
     respond_with @post
   end
 
-  def update
+  def update    
     @post = Post.find(params[:id])
     flash[:notice] = 'Post was successfully updated.' if @post.update_attributes(params[:post])
     respond_with @post
@@ -36,4 +38,12 @@ class PostsController < ApplicationController
     @post.destroy
     respond_with @post
   end
+  
+protected
+
+  def load_resources
+    @categories = Category.all
+    @authors = User.all    
+  end
+
 end
