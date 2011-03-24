@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110322002148) do
+ActiveRecord::Schema.define(:version => 20110323235608) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -35,11 +35,14 @@ ActiveRecord::Schema.define(:version => 20110322002148) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.text     "excerpt",    :limit => 255
+    t.text     "excerpt",      :limit => 255
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
+    t.boolean  "draft"
+    t.string   "slug"
+    t.datetime "published_at"
   end
 
   create_table "users", :force => true do |t|
