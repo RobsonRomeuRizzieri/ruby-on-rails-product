@@ -9,8 +9,12 @@ Producer::Application.routes.draw do
   resources :categories
 
   resources :posts do
-    resources :comments, :only => [:create]
+    resources :comments
   end
+
+  match '/home'   => "pages#index",  :as => :home
+  match '/prices' => "pages#prices", :as => :prices
+  match '/tour'   => "pages#tour",   :as => :tour
 
   get "pages/index"
 end

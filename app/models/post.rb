@@ -24,6 +24,10 @@ class Post < ActiveRecord::Base
   def to_param
     "#{id}-#{slug}"
   end
+  
+  def bla
+    "blabla"
+  end
 
 protected
 
