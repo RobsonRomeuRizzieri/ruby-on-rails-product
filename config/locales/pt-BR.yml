@@ -18,6 +18,7 @@
         categories: Publicar com estas categorias
         slug: Defina uma url
         author: "Post por:"  
+        media: "Arquivos"
   
   date:
     formats:

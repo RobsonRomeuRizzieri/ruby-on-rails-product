@@ -27,7 +27,7 @@
      <hr class="thick" />
 
      <p>
-       <%= f.submit :class => "button" %> 
+       <%= f.submit :class => "button" %>
        or <%= link_to t("cancel"), admin_posts_path %>
      </p>
    </div>
@@ -36,8 +36,8 @@
      <%= section t(".categories") do %>
        <ul class="categories-field">
          <%- @categories.each do |c| -%>
-           <li><%= check_box_tag "post[category_ids][]", 
-           c.id, @post.categories.include?(c) %> 
+           <li><%= check_box_tag "post[category_ids][]",
+           c.id, @post.categories.include?(c) %>
            <%= c.name %></li>
          <%- end -%>
        </ul>
@@ -64,6 +64,26 @@
          <%= f.text_field :slug, :size => 27 %>
        </div>
      <% end %>
+
+     <hr/>
+
+     <%= section t(".media") do %>
+       <div class="media">
+         <%- @assets.each do |a| -%>
+           <%= link_to image_tag(a.document.url(:thumb)) , a.document.url, :target => "_blank"  %>
+         <%- end -%>
+       </div>
+     <% end %>
+
+     <br/>
    </div>
 
+ <% end %>
+
+ <%= javascript_include_tag "vendor/jquery.textile.image" %>
+
+ <% content_for :bottom do %>
+   <script type="text/javascript" charset="utf-8">
+     $(".media").insertTextileImageTo("#post_body")
+   </script>
  <% end %>

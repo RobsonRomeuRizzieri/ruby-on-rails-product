@@ -1,14 +1,18 @@
 class User < ActiveRecord::Base
-  
-  validates_presence_of :email, :first_name, :last_name
-  validates_uniqueness_of :email
-  validates_format_of :email, 
-    :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-    
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+
+  attr_accessible :email, :password, :password_confirmation,
+    :remember_me, :full_name
+
+  validates_presence_of :full_name
   has_many :posts, :foreign_key => "author_id"
-  
-  def full_name
-    "#{first_name} #{last_name}".capitalize
+
+  def first_name
+    self.full_name.split.first
   end
-    
+
+  def last_name
+    self.full_name.split.last
+  end
+
 end
