@@ -29,10 +29,6 @@ class Post < ActiveRecord::Base
     "#{id}-#{slug}"
   end
   
-  def bla
-    "blabla"
-  end
-
 protected
 
   def generate_slug

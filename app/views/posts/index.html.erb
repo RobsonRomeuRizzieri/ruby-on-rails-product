@@ -16,6 +16,10 @@
   <%- else -%>
     <h3>Zero posts founded.</h3>
   <%- end -%>
+  
+  <div class="left">
+    <%= will_paginate @posts %>
+  </div>  
 </div>
 
 <%= render "sidebar" %>

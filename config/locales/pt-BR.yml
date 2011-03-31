@@ -17,9 +17,9 @@
       form:
         categories: Publicar com estas categorias
         slug: Defina uma url
-        author: "Post por:"  
+        author: "Post por:"
         media: "Arquivos"
-  
+
   date:
     formats:
       default: "%d/%m/%Y"
@@ -35,7 +35,7 @@
       - :day
       - :month
       - :year
-  
+
   time:
     formats:
       default: "%A, %d de %B de %Y, %H:%M h"
@@ -101,7 +101,7 @@
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""     
+          unit: ""
           thousand: "mil"
           million:
             one: milhão
@@ -215,7 +215,7 @@
 
       full_messages:
         format: "%{attribute}%{message}"
-        
+
     models:
       user:
         one: Usuário

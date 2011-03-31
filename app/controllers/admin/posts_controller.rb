@@ -1,10 +1,10 @@
 class Admin::PostsController < Admin::AdminController
   menu_item :posts
-  
+
   before_filter :load_resources, :only => %w(new create edit update)
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page])
     respond_with @posts
   end
 
@@ -44,12 +44,16 @@ class Admin::PostsController < Admin::AdminController
     respond_with @post, :location => admin_posts_path
   end
 
+  def assets
+    @assets = Asset.paginate(:page => params[:page], :per_page => 4)
+  end
+
 protected
 
   def load_resources
     @authors = User.all
     @categories = Category.all
-    @assets = Asset.order("created_at DESC")
+    @assets = Asset.paginate(:page => params[:page], :per_page => 4)
   end
 
 end

@@ -20,7 +20,9 @@
   <% end %>
   </div>
 
-  <%= render "comments/form", :post => @post, :comment => Comment.new %>
+  <div id="comment_form">
+    <%= render "comments/form", :post => @post, :comment => Comment.new %>
+  </div>
 </div>
 
 <%= render "sidebar" %>

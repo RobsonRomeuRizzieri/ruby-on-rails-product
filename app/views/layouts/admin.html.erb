@@ -3,7 +3,7 @@
 <head>
   <title>Producer</title>
   <%= stylesheet_link_tag "admin", "scaffold" %>
-  <%= javascript_include_tag "vendor/jquery", "rails" %>
+  <%= javascript_include_tag "vendor/jquery", "vendor/jquery-ui", "rails" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -18,7 +18,7 @@
           <%= m.assets 'Assets', admin_assets_path %>
           <%= m.changelog 'Changelog', "#" %>
           <%= m.faqs 'FAQ', "#" %>
-          <%= m.inquiries 'Inquiries', "#" %>
+          <%= m.inquiries 'Inquiries', admin_inquiries_path %>
           <%= m.users 'Users', admin_users_path %>
         <% end %>
       </div>

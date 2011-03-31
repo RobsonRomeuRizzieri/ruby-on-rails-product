@@ -68,14 +68,20 @@
      <hr/>
 
      <%= section t(".media") do %>
-       <div class="media">
-         <%- @assets.each do |a| -%>
-           <%= link_to image_tag(a.document.url(:thumb)) , a.document.url, :target => "_blank"  %>
-         <%- end -%>
+       <div id="media" class="media">
+         <%= render :partial => "asset", :collection => @assets %>
        </div>
-     <% end %>
 
-     <br/>
+       <p>
+         <%= link_to "load more assets",
+               assets_admin_posts_path(:page => @assets.next_page),
+               :remote => true,
+               :id => "more-assets",
+               :class => "button" %>
+
+         <%= image_tag "loader.gif", :id => "assets-loading", :class => "middle loading" %>
+       </p>
+     <% end %>
    </div>
 
  <% end %>
@@ -84,6 +90,16 @@
 
  <% content_for :bottom do %>
    <script type="text/javascript" charset="utf-8">
-     $(".media").insertTextileImageTo("#post_body")
+    var toggleLoading = function() { 
+      $("#assets-loading").toggle(); 
+    };
+
+    $(document).ready(function() {
+      $(".media").insertTextileImageTo("#post_body");
+
+      $("#more-assets")
+        .bind("ajax:loading",  toggleLoading)
+        .bind("ajax:complete", toggleLoading);
+    });
    </script>
  <% end %>

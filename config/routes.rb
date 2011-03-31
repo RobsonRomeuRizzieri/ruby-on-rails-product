@@ -9,13 +9,17 @@ Producer::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :posts
+    resources :posts do
+      get :assets, :on => :collection
+    end
+
     resources :categories, :except => [:show]
     resources :assets
     resources :users
+    resources :inquiries, :except => [:new, :create]
   end
 
-  resources :categories
+  resources :inquiries, :only => [:new, :create], :path => "contact"
 
   resources :posts do
     resources :comments
