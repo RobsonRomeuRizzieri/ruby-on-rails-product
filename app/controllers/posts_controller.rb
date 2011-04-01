@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @posts = @category.posts if @category.present?
     @posts = @posts.published
     @posts = @posts.paginate(:page => params[:page])
-    
+
     respond_with @posts do |format|
       format.atom
     end

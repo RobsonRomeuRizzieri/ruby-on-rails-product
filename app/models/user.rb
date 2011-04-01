@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation,
-    :remember_me, :full_name
+      :remember_me, :full_name
 
   validates_presence_of :full_name
   has_many :posts, :foreign_key => "author_id"

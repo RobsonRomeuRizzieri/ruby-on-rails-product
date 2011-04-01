@@ -2,9 +2,23 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
 gem 'sqlite3'
-gem 'paperclip', '2.3.8'
-gem 'menu_builder', '0.4.0'
-gem 'RedCloth', '4.2.7'
+gem 'paperclip'
+gem 'menu_builder'
+gem 'RedCloth'
 gem 'devise'
-gem 'reverse_captcha', '0.0.1'
+gem 'reverse_captcha'
 gem 'will_paginate', '3.0.pre2'
+
+group :development, :test do
+  gem "rspec"
+  gem "rspec-rails"
+  gem 'steak'
+  gem 'ruby-debug'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+end
