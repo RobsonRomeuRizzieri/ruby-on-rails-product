@@ -1,13 +1,36 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Producer</title>
   <%= stylesheet_link_tag "application", "scaffold" %>
-  <%= javascript_include_tag "vendor/jquery", "vendor/jquery-ui", "rails" %>
+  <%= javascript_include_tag "vendor/jquery", "vendor/jquery-ui", "vendor/jquery.placeholder", "rails" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
+  <!--[if lte IE 7]>
+  <script defer type="text/javascript" src="javascripts/vendor/pngfix.js"></script>
+
+  <div class="notSupportedBrowser important">
+    <p>
+      <strong>Seu navegador está desatualizado. Baixe a nova versão
+      <%= link_to image_tag("ua_ie.jpg", :class => "middle"),
+            "http://www.microsoft.com/windows/internet-explorer", :target => "_blank" %>
+      ou escolha outro suportado:</strong>
+      <%= link_to image_tag("ua_ff.jpg", :class => "middle"), "http://www.mozilla.com/", :target => "_blank" %>
+      <%= link_to image_tag("ua_sf.jpg", :class => "middle"), "http://www.apple.com/safari/", :target => "_blank" %>
+      <%= link_to image_tag("ua_ch.jpg", :class => "middle"), "http://www.google.com/chrome/", :target => "_blank" %>
+      <%= link_to image_tag("ua_op.jpg", :class => "middle"), "http://www.opera.com/", :target => "_blank" %>
+    </p>
+  </div>
+  <![endif]-->
+
+  <div id="user-bar">
+    <%= link_to "admin panel", admin_root_path, :class => "button" %>
+  </div>
+
   <div id="wrapper">
+
     <div id="header">
       <div id="logo">
         <%= image_tag "logo_header.png", :class => "middle" %>
@@ -31,7 +54,7 @@
             CONTACT <br/><span>YOU'RE NOT ALONE <br/> GET IN TOUCH</span>
           <% end %>
 
-          <%= m.prices "#" do %>
+          <%= m.prices prices_path do %>
             PRICE <br/><span>SMALL AMOUNT <br/> FOR A BIG BENEFIT</span>
           <% end %>
         <% end %>
@@ -39,20 +62,33 @@
     </div>
 
     <div id="content">
+
+      <p class="demo">
+        Este site é a demonstração do projeto criado no
+        <%= link_to "Curso Rails do Básico ao Avançado", "http://www.egenial.com.br/cursorails" %> da e-Genial.
+      </p>
+
       <%= flash_messages %>
+
       <%= yield %>
     </div>
 
     <div id="footer">
       <div id="footer-nav">
-        <ul>
-          <li><a>HOME</a></li>
-          <li><a>TOUR</a></li>
-          <li><a>BLOG</a></li>
-          <li><a>FAQ</a></li>
-          <li><a>CONTACT</a></li>
-          <li><a>PRICE</a></li>
-        </ul>
+        <%= menu do |m| %>
+          <%= m.home "HOME", root_path %>
+          <%= m.tour "TOUR", tour_path %>
+          <%= m.posts "POSTS", posts_path %>
+          <%= m.contact "CONTACT", new_inquiry_path %>
+          <%= m.prices "PRICE", prices_path %>
+        <% end %>
+      </div>
+
+      <div id="info">
+        <p>
+          <%= link_to image_tag("egenial.png"), "http://www.egenial.com.br/cursorails" %>
+          <%= link_to image_tag("webbynode.png"), "http://webbynode.com/" %>
+        </p>
       </div>
     </div>
   </div>

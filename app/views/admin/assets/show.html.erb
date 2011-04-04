@@ -3,6 +3,7 @@
     <%= link_to image_tag(@asset.document.url(:medium)), @asset.document.url, :target => "_blank" %>
   </div>
 
+  <% cache @asset do %>
   <div class="info">
     <p>
       <b>Title:</b>
@@ -20,4 +21,6 @@
       <%= link_to 'Back', admin_assets_path, :class => "button" %>
     </p>
   </div>
+  <% end %>
+  
 </div>

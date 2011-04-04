@@ -2,8 +2,15 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-  <p><%= f.text_field :email, :placeholder => ta(User, :email) %></p>
-  <p><%= f.password_field :password, :placeholder => ta(User, :password) %></p>
+  <p>
+    <%= f.text_field :email, :placeholder => ta(User, :email) %>
+    <span class="hint">admin@cursorails.net</span>
+  </p>
+
+  <p>
+    <%= f.password_field :password, :placeholder => ta(User, :password) %>
+    <span class="hint">123456</span>
+  </p>
 
   <% if devise_mapping.rememberable? -%>
     <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>

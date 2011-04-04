@@ -2,6 +2,7 @@ class Admin::PostsController < Admin::AdminController
   menu_item :posts
 
   before_filter :load_resources, :only => %w(new create edit update)
+  cache_sweeper :post_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @posts = Post.paginate(:page => params[:page])

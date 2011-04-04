@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330222325) do
+ActiveRecord::Schema.define(:version => 20110405013633) do
 
   create_table "assets", :force => true do |t|
     t.string   "title"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20110330222325) do
     t.integer "category_id", :null => false
   end
 
+  create_table "changes", :force => true do |t|
+    t.string   "entry"
+    t.string   "category"
+    t.date     "released_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.string   "author"
     t.string   "email"
@@ -42,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110330222325) do
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "read",       :default => false
   end
 
   create_table "inquiries", :force => true do |t|

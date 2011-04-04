@@ -9,10 +9,14 @@ Producer::Application.routes.draw do
   end
 
   namespace :admin do
+    root :to => "dashboard#index"
+
     resources :posts do
       get :assets, :on => :collection
+      resources :comments
     end
 
+    resources :changes, :except => [:show]
     resources :categories, :except => [:show]
     resources :assets
     resources :users

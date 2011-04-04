@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 
   before_filter :load_categories
 
+  caches_page :show
+
   def index
     @posts = Post.scoped
     @posts = @posts.search(params[:search]) if params[:search]
