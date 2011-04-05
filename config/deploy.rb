@@ -71,6 +71,6 @@ end
 namespace :cron do
   desc "Update the crontab file"
   task :update, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
+    run "cd #{current_path} && whenever --update-crontab #{application}"
   end
 end
